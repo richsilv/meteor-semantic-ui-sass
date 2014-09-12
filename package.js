@@ -1,17 +1,17 @@
 Package.describe({
-  summary: "Semantic UI (0.19.0) packaged for Meteor",
-  version: "0.19.1",
-  name: "nooitaf:semantic-ui",
-  git: "https://github.com/nooitaf/meteor-semantic-ui.git"
+  summary: "Semantic UI (0.19.0) packaged for Meteor 0.9.1+ (including icons)",
+  version: "1.0.0",
+  name: "richsilv:semantic-ui",
+  git: "https://github.com/richsilv/meteor-semantic-ui.git"
 });
 
 
 Package.on_use(function (api) {
-  api.versionsFrom('METEOR@0.9.0');
+  api.versionsFrom('METEOR@0.9.1');
   api.use('jquery','client');
 
   var path = Npm.require('path');
-  var assetPath = path.join('lib/semantic-ui/build/uncompressed/');
+  var assetPath = path.join('assets/');
   var assetFiles = [
     assetPath + 'collections/breadcrumb.css',
     assetPath + 'collections/form.css',
@@ -32,23 +32,6 @@ Package.on_use(function (api) {
     assetPath + 'elements/reveal.css',
     assetPath + 'elements/segment.css',
     assetPath + 'elements/step.css',
-    assetPath + 'fonts/basic.icons.eot',
-    assetPath + 'fonts/basic.icons.svg',
-    assetPath + 'fonts/basic.icons.ttf',
-    assetPath + 'fonts/basic.icons.woff',
-    assetPath + 'fonts/icons.eot',
-    assetPath + 'fonts/icons.otf',
-    assetPath + 'fonts/icons.svg',
-    assetPath + 'fonts/icons.ttf',
-    assetPath + 'fonts/icons.woff',
-    assetPath + 'images/loader-large-inverted.gif',
-    assetPath + 'images/loader-large.gif',
-    assetPath + 'images/loader-medium-inverted.gif',
-    assetPath + 'images/loader-medium.gif',
-    assetPath + 'images/loader-mini-inverted.gif',
-    assetPath + 'images/loader-mini.gif',
-    assetPath + 'images/loader-small-inverted.gif',
-    assetPath + 'images/loader-small.gif',
     assetPath + 'modules/accordion.css',
     assetPath + 'modules/accordion.js',
     assetPath + 'modules/behavior/api.js',
@@ -83,12 +66,29 @@ Package.on_use(function (api) {
     assetPath + 'modules/transition.js',
     assetPath + 'modules/video.css',
     assetPath + 'modules/video.js',
+    assetPath + 'fonts/basic.icons.eot',
+    assetPath + 'fonts/basic.icons.svg',
+    assetPath + 'fonts/basic.icons.ttf',
+    assetPath + 'fonts/basic.icons.woff',
+    assetPath + 'fonts/icons.eot',
+    assetPath + 'fonts/icons.otf',
+    assetPath + 'fonts/icons.svg',
+    assetPath + 'fonts/icons.ttf',
+    assetPath + 'fonts/icons.woff',
+    assetPath + 'images/loader-large-inverted.gif',
+    assetPath + 'images/loader-large.gif',
+    assetPath + 'images/loader-medium-inverted.gif',
+    assetPath + 'images/loader-medium.gif',
+    assetPath + 'images/loader-mini-inverted.gif',
+    assetPath + 'images/loader-mini.gif',
+    assetPath + 'images/loader-small-inverted.gif',
+    assetPath + 'images/loader-small.gif',
     assetPath + 'views/comment.css',
     assetPath + 'views/feed.css',
     assetPath + 'views/item.css',
     assetPath + 'views/list.css',
     assetPath + 'views/statistic.css'
   ];
-  api.add_files(assetFiles, 'client');
-
+  api.add_files(assetFiles, 'client');  
+  api.add_files('pathOveride.css', 'client');
 });
