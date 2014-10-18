@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Semantic UI (0.19.0) packaged for Meteor 0.9.1+ (including icons), SCSS version",
-  version: "1.0.1",
+  version: "1.0.2",
   name: "richsilv:semantic-ui-sass",
   git: "https://github.com/richsilv/meteor-semantic-ui-sass.git"
 });
@@ -9,8 +9,8 @@ Package.describe({
 Package.on_use(function (api) {
   api.versionsFrom('METEOR@0.9.1');
   api.use('jquery','client');
-  api.use("fourseven:scss@0.9.5", ['client']);
-  api.imply('fourseven:scss@0.9.5', ['client']);
+  api.use("fourseven:scss@0.9.5", ['server', 'client']);
+  api.imply('fourseven:scss@0.9.5', ['server', 'client']);
 
   var path = Npm.require('path');
   var assetPath = path.join('assets/');
