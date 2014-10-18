@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Semantic UI (0.19.0) packaged for Meteor 0.9.1+ (including icons), SCSS version",
-  version: "1.0.0",
+  version: "1.0.1",
   name: "richsilv:semantic-ui-sass",
   git: "https://github.com/richsilv/meteor-semantic-ui-sass.git"
 });
