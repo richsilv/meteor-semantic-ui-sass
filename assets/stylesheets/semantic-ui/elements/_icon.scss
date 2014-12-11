@@ -4,7 +4,7 @@
  * http://github.com/jlukic/semantic-ui/
  *
  *
- * Copyright 2013 Contributors
+ * Copyright 2014 Contributors
  * Released under the MIT license
  * http://opensource.org/licenses/MIT
  *
@@ -29,11 +29,11 @@
 
 @font-face {
   font-family: 'Icons';
-  src: font-url("semantic-ui/icons.eot");
-  src: font-url("semantic-ui/icons.eot?#iefix") format('embedded-opentype'),
-    font-url("semantic-ui/icons.svg#icons") format('svg'),
-    font-url("semantic-ui/icons.woff") format('woff'),
-    font-url("semantic-ui/icons.ttf") format('truetype');
+  src: asset-url("semantic-ui/icons.eot");
+  src: asset-url("semantic-ui/icons.eot?#iefix") format('embedded-opentype'),
+    asset-url("semantic-ui/icons.svg#icons") format('svg'),
+    asset-url("semantic-ui/icons.woff") format('woff'),
+    asset-url("semantic-ui/icons.ttf") format('truetype');
   font-style: normal;
   font-weight: normal;
   font-variant: normal;

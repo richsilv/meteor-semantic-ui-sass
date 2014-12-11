@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Semantic UI (0.19.0) packaged for Meteor 0.9.1+ (including icons), SCSS version",
-  version: "1.0.3",
+  version: "1.0.10",
   name: "richsilv:semantic-ui-sass",
   git: "https://github.com/richsilv/meteor-semantic-ui-sass.git"
 });
@@ -8,13 +8,13 @@ Package.describe({
 
 Package.on_use(function (api) {
   api.versionsFrom('METEOR@0.9.1');
-  api.use('jquery','client');
-  api.use("fourseven:scss@0.9.5", ['server', 'client']);
-  api.imply('fourseven:scss@0.9.5', ['server', 'client']);
+  api.use('jquery@1.0.1','client');
+  api.use("fourseven:scss@1.0.0", ['server', 'client']);
+  api.imply('fourseven:scss@1.0.0', ['server', 'client']);
 
   var path = Npm.require('path');
   var assetPath = path.join('assets/');
-  var assetFiles = [
+  var jsFiles = [
     'modules/accordion.js',
     'modules/behavior/api.js',
     'modules/behavior/colorize.js',
@@ -34,6 +34,10 @@ Package.on_use(function (api) {
     'modules/tab.js',
     'modules/transition.js',
     'modules/video.js',
+  ].map(function(path) {
+    return assetPath + path;
+  });
+  var assetFiles = [
     'fonts/basic.icons.eot',
     'fonts/basic.icons.svg',
     'fonts/basic.icons.ttf',
@@ -50,57 +54,64 @@ Package.on_use(function (api) {
     'images/loader-mini-inverted.gif',
     'images/loader-mini.gif',
     'images/loader-small-inverted.gif',
-    'images/loader-small.gif',
-    '_stylesheets/semantic-ui/semantic-ui.scss',
-    '_stylesheets/semantic-ui/collections/_all.scss',
-    '_stylesheets/semantic-ui/collections/_breadcrumb.scss',
-    '_stylesheets/semantic-ui/collections/_form.scss',
-    '_stylesheets/semantic-ui/collections/_grid.scss',
-    '_stylesheets/semantic-ui/collections/_menu.scss',
-    '_stylesheets/semantic-ui/collections/_message.scss',
-    '_stylesheets/semantic-ui/collections/_table.scss',
-    '_stylesheets/semantic-ui/depends/_basic.icon.scss',
-    '_stylesheets/semantic-ui/depends/_icon.scss',
-    '_stylesheets/semantic-ui/depends/_loader.scss',
-    '_stylesheets/semantic-ui/elements/_all.scss',
-    '_stylesheets/semantic-ui/elements/_basic.icon.scss',
-    '_stylesheets/semantic-ui/elements/_button.scss',
-    '_stylesheets/semantic-ui/elements/_divider.scss',
-    '_stylesheets/semantic-ui/elements/_header.scss',
-    '_stylesheets/semantic-ui/elements/_icon.scss',
-    '_stylesheets/semantic-ui/elements/_image.scss',
-    '_stylesheets/semantic-ui/elements/_input.scss',
-    '_stylesheets/semantic-ui/elements/_label.scss',
-    '_stylesheets/semantic-ui/elements/_loader.scss',
-    '_stylesheets/semantic-ui/elements/_progress.scss',
-    '_stylesheets/semantic-ui/elements/_reveal.scss',
-    '_stylesheets/semantic-ui/elements/_segment.scss',
-    '_stylesheets/semantic-ui/elements/_step.scss',
-    '_stylesheets/semantic-ui/modules/_accordion.scss',
-    '_stylesheets/semantic-ui/modules/_all.scss',
-    '_stylesheets/semantic-ui/modules/_chatroom.scss',
-    '_stylesheets/semantic-ui/modules/_checkbox.scss',
-    '_stylesheets/semantic-ui/modules/_dimmer.scss',
-    '_stylesheets/semantic-ui/modules/_dropdown.scss',
-    '_stylesheets/semantic-ui/modules/_modal.scss',
-    '_stylesheets/semantic-ui/modules/_nag.scss',
-    '_stylesheets/semantic-ui/modules/_popup.scss',
-    '_stylesheets/semantic-ui/modules/_rating.scss',
-    '_stylesheets/semantic-ui/modules/_reveal.scss',
-    '_stylesheets/semantic-ui/modules/_search.scss',
-    '_stylesheets/semantic-ui/modules/_shape.scss',
-    '_stylesheets/semantic-ui/modules/_sidebar.scss',
-    '_stylesheets/semantic-ui/modules/_tab.scss',
-    '_stylesheets/semantic-ui/modules/_transition.scss',
-    '_stylesheets/semantic-ui/modules/_all.scss',
-    '_stylesheets/semantic-ui/modules/_comment.scss',
-    '_stylesheets/semantic-ui/modules/_feed.scss',
-    '_stylesheets/semantic-ui/modules/_item.scss',
-    '_stylesheets/semantic-ui/modules/_list.scss',
-    '_stylesheets/semantic-ui/modules/_statistic.scss'
+    'images/loader-small.gif'
+  ].map(function(path) {
+    return assetPath + path;
+  });    
+  var scssFiles = [
+    'stylesheets/_semantic-ui.scss',
+    'stylesheets/semantic-ui/collections/_all.scss',
+    'stylesheets/semantic-ui/collections/_breadcrumb.scss',
+    'stylesheets/semantic-ui/collections/_form.scss',
+    'stylesheets/semantic-ui/collections/_grid.scss',
+    'stylesheets/semantic-ui/collections/_menu.scss',
+    'stylesheets/semantic-ui/collections/_message.scss',
+    'stylesheets/semantic-ui/collections/_table.scss',
+    'stylesheets/semantic-ui/depends/_basic.icon.scss',
+    'stylesheets/semantic-ui/depends/_icon.scss',
+    'stylesheets/semantic-ui/depends/_loader.scss',
+    'stylesheets/semantic-ui/elements/_all.scss',
+    'stylesheets/semantic-ui/elements/_basic.icon.scss',
+    'stylesheets/semantic-ui/elements/_button.scss',
+    'stylesheets/semantic-ui/elements/_divider.scss',
+    'stylesheets/semantic-ui/elements/_header.scss',
+    'stylesheets/semantic-ui/elements/_icon.scss',
+    'stylesheets/semantic-ui/elements/_image.scss',
+    'stylesheets/semantic-ui/elements/_input.scss',
+    'stylesheets/semantic-ui/elements/_label.scss',
+    'stylesheets/semantic-ui/elements/_loader.scss',
+    'stylesheets/semantic-ui/elements/_progress.scss',
+    'stylesheets/semantic-ui/elements/_reveal.scss',
+    'stylesheets/semantic-ui/elements/_segment.scss',
+    'stylesheets/semantic-ui/elements/_step.scss',
+    'stylesheets/semantic-ui/modules/_accordion.scss',
+    'stylesheets/semantic-ui/modules/_all.scss',
+    'stylesheets/semantic-ui/modules/_chatroom.scss',
+    'stylesheets/semantic-ui/modules/_checkbox.scss',
+    'stylesheets/semantic-ui/modules/_dimmer.scss',
+    'stylesheets/semantic-ui/modules/_dropdown.scss',
+    'stylesheets/semantic-ui/modules/_modal.scss',
+    'stylesheets/semantic-ui/modules/_nag.scss',
+    'stylesheets/semantic-ui/modules/_popup.scss',
+    'stylesheets/semantic-ui/modules/_rating.scss',
+    'stylesheets/semantic-ui/modules/_reveal.scss',
+    'stylesheets/semantic-ui/modules/_search.scss',
+    'stylesheets/semantic-ui/modules/_shape.scss',
+    'stylesheets/semantic-ui/modules/_sidebar.scss',
+    'stylesheets/semantic-ui/modules/_tab.scss',
+    'stylesheets/semantic-ui/modules/_transition.scss',
+    'stylesheets/semantic-ui/modules/_video.scss',    
+    'stylesheets/semantic-ui/views/_all.scss',
+    'stylesheets/semantic-ui/views/_comment.scss',
+    'stylesheets/semantic-ui/views/_feed.scss',
+    'stylesheets/semantic-ui/views/_item.scss',
+    'stylesheets/semantic-ui/views/_list.scss',
+    'stylesheets/semantic-ui/views/_statistic.scss'
   ].map(function(path) {
     return assetPath + path;
   });
-  api.add_files(assetFiles, 'client');  
+  api.add_files(jsFiles, 'client');
+  api.add_files(assetFiles, 'client', {isAsset: true});
+  api.add_files(scssFiles, 'server', {isAsset: true});
   api.add_files('pathOveride.css', 'client');
 });
